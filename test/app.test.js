@@ -25,4 +25,22 @@ describe('Express App', () => {
       .expect(400, 'sort must contain "rating" or "app"');
   });
 
+  const validSortValues = ['Rating', 'App', ''];
+  validSortValues.forEach(sortValue => {
+    it(`should return an array of apps sorted by ${sortValue}`, () => {
+      return supertest(app)
+        .get('/apps')
+        .query({ sort: sortValue })
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.be.an('array');
+          let i = 0, sorted = true;
+          while (sorted && i < res.body.length -1) {
+            sorted = sorted && res.body[i][sortValue] < res.body[i + 1][sortValue];
+            i++;
+          }
+          expect(sorted).to.be.true;
+        });
+    });
+  });
 });
