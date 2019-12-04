@@ -6,6 +6,6 @@ describe('Express App', () => {
   it('should return a message from GET /', () => {
     return supertest(app)
       .get('/apps')
-    //   .expect(200, 'Hello Express!');
+      .expect(200);
   });
 });
