@@ -18,4 +18,11 @@ describe('Express App', () => {
       });
   });
 
+  it('should return 400 if \'sort\' query is invalid', () => {
+    return supertest(app)
+      .get('/apps')
+      .query({ sort: 'WRONG'})
+      .expect(400, 'sort must contain "rating" or "app"');
+  });
+
 });
