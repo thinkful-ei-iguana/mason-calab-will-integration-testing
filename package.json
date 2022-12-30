@@ -20,7 +20,7 @@
   "homepage": "https://github.com/thinkful-ei-iguana/google-play-store-mason--angel#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.1",
     "supertest": "^4.0.2"
   },
